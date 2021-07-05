@@ -1,0 +1,286 @@
+.o_table_wrapper {
+
+	&.o_table_flexi {
+		.o_table_body{
+			margin-top: $line-height-computed;
+		}
+		.table {
+			margin-top: $line-height-computed;
+			td ul {
+				margin: 0;
+			}
+		}
+		&.o_table_no_margin .table {
+			margin: 0;
+		}
+		tfoot {
+			border-top:solid $table-border-color 2px;
+		}
+		
+		.o_multiselect {
+			width: 20px;
+			text-align: center;
+		}
+	}
+	
+	&.o_table_edit table tbody {
+		border-top:solid $o-table-edit-border 4px;
+		background-color: $o-table-edit-bg;
+	}
+
+	.o_table_search {
+		max-width:50em;
+	}
+
+	.o_table_footer {
+		.o_table_expandall>a {
+			font-weight: normal;
+			margin-right: 10px;
+		}
+		
+		.o_table_expandall.input-sm {
+			padding: 5px 6px;
+		}	
+
+		.o_table_pagination {
+			text-align: center;
+		}
+	}
+	
+	.o_table_rows_infos {
+		float: left;
+		padding-left: 0;
+		padding-right: 20px;
+		margin: $line-height-computed 0;
+	}
+	
+	.o_row_selected td { 
+		background-color: $o-table-row-selected-color !important; 
+	}
+
+	.o_table {
+		margin-bottom: 0;
+	}
+	.o_marked {
+		 font-weight: bold;
+	}
+
+	.table {
+		margin-bottom: 0;
+		border-collapse: separate; /* fix FF border problem with sticky cols below */ 
+	}
+	
+	th {
+		a, a:hover {
+			color: $o-table-header-color;
+			text-decoration: none;
+		}
+	}
+	/* action cols must have a minimum width to users can touch it */
+	.o_col_action {
+		.o_icon_actions {
+			width: 25px;
+		}
+	}
+
+	/* sticky first (checkboxes) and last (actions) columns on scrolling */
+	.o_col_sticky_left,
+	.o_col_sticky_right {	
+		position: sticky;
+		background: white;
+		z-index: 1; /* above normal columns that are positioned */
+		transition: 0.3s background;
+	}
+	.o_col_sticky_left {
+		left: 0;
+	}
+	.o_scrollable_left .o_col_sticky_left {
+		box-shadow: 2px 0 2px -2px darken($table-border-color,10%);
+    	background-color: rgb(250,250,250);
+	}
+	.o_multiselect.o_table_checkall.o_col_sticky_left {
+		z-index: 2;		/* make select-all menu appear above sticky columns */
+	}
+	.o_col_sticky_right {
+		right: 0;
+	}
+	.o_scrollable_right .o_col_sticky_right {
+		box-shadow: -2px 0 2px -2px darken($table-border-color,10%);
+    	background-color: rgb(250,250,250);
+	}
+		
+	
+	/* fix striped and hover bg colors for sticky columns */
+	.table-striped {
+  		> tbody > tr:nth-child(odd) {
+  			.o_col_sticky_right,
+  			.o_col_sticky_left {		
+		    	background-color: $table-bg-accent;
+		    }
+		}
+	}
+	.o_scrollable_right .table-striped {
+  		> tbody > tr:nth-child(odd) {
+  			.o_col_sticky_right {		
+		    	background-color: rgb(245,245,245);
+		    }
+		}
+  	}
+	.o_scrollable_left .table-striped {
+  		> tbody > tr:nth-child(odd) {
+  			.o_col_sticky_left {		
+		    	background-color: rgb(245,245,245);		    
+			}
+		}
+  	}
+  	.table-hover {
+  		> tbody > tr:hover {
+  			.o_col_sticky_right,
+  			.o_col_sticky_left {		
+    			background-color: $table-bg-hover;
+  			}
+		}
+	}
+}
+
+.o_table_search {
+	a.btn.o_reset_quick_search {
+		width: 38px;
+		margin-left: -38px;
+		z-index:5;
+		color: grey;
+	}
+	
+	>label {
+		display: inline;
+	}
+}
+
+.o_breadcrumb.o_table_flexi_breadcrumb ol.breadcrumb {
+	margin: 5px 0 0 0;
+}
+
+div.o_table_flexi div.o_table_flexi_leaf  {
+	margin-left: 1.55em;
+}
+
+@for $i from 0 through 11 {
+	div.o_table_flexi div.o_table_flexi_l#{$i}  {
+		padding-left: ($i * $o-tree-padding-steps-px); 
+	}
+}
+
+@media (max-width: $screen-xs-max) { 
+	.o_table_wrapper .o_table_rows_infos {
+		clear:both;
+	}
+}
+
+a.o_orderby, a.o_orderby:hover {
+	color: $o-table-header-color;
+	text-decoration: none;
+	white-space: nowrap;
+
+	&.o_orderby_asc::after, &.o_orderby_desc::after {
+		font-family: FontAwesome;
+		color: $brand-primary;
+		margin-left: 5px;
+	}
+	
+	&.o_orderby_asc::after {
+		content: '\f0d8';
+	}
+	
+	&.o_orderby_desc::after {
+		content: '\f0d7';
+	}
+}
+
+.o_row_selected {
+	background: $o-table-row-selected-color !important;	
+}
+.o_table_row_count {
+	padding-top:6px;
+	padding-bottom:6px;
+	vertical-align:middle;
+}
+
+.o_table_row_details td {
+	background-color: white;
+}
+
+.o_table_config {
+	font-size: floor($font-size-base * 0.9);
+}
+
+.o_table_tools {
+	margin-left: 6px;
+}
+
+.o_table_tools_indications, .o_table_tools_indications_filter_only {
+	margin-left: 10px;
+	padding-top:3px;
+	font-size:80%;
+	
+	a {
+		color: $brand-danger;
+	}
+}
+
+.o_table_toolbar_left .o_table_tools_indications {
+	text-align: right;
+}
+
+.o_table_count {
+	max-width:20em;
+	float:left;
+	padding: 0 $panel-body-padding;
+}
+
+.o_table_filter {
+	.control-label {
+		margin-right: 0.5em;
+		&:after {
+			content: ':';
+		}
+	} 
+	
+ 	> div {
+		display:inline-block;
+	
+		label {
+			font-weight: normal;
+		}
+	}
+}
+
+ table tr.o_no_border td,
+ table tr.o_no_border th {
+ 	border-top: 0;
+ }
+
+/* bootstrap extensions */
+.o_info, o_note, o_important, o_warning, o_error {
+	.table-bordered td {
+		border-color: $gray-dark;
+	}
+}
+
+/* table embedded in panels */
+.panel {
+	.o_table_layout {
+		border-top: 1px solid $panel-default-border;
+		padding-top: $padding-base-vertical;
+	}
+	.o_table_count {
+		padding: 0 $panel-body-padding;
+	}
+}
+
+.o_table_header_fw {
+	width: 40px;
+}
+
+
+
+	

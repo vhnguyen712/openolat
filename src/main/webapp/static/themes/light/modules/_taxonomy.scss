@@ -1,0 +1,73 @@
+.o_taxonomy div#o_main_toolbar.o_toolbar {
+	margin-top: 0px;
+}
+
+.o_taxonomy_listing.o_rendertype_custom {
+	
+	.o_table_body.container-fluid {
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+	
+	.o_taxonomy_row {
+		position: relative;
+		display: inline-block;
+		height: 235px;		
+		width: 450px;
+		vertical-align: top;
+		margin-right: 10px;
+		
+		ul {
+			padding-left: 2em;
+		}
+	}
+}
+
+.o_tag.o_competence {
+	background-color: #ffffff;
+	color: $o-competences-font-color;
+	border-color: $o-competences-color; 
+	
+	&:hover {
+		text-decoration: none;
+		color: $o-competences-font-color;
+	}
+	
+	&.o_tag_clickable {
+		&:hover {
+			text-decoration: none;
+			background-color: darken(#ffffff, 10%);
+			border-color: $o-competences-color;
+		}
+		
+		&:active {
+			background-color: darken(#ffffff, 15%);
+			border-color: $o-competences-color;
+		}
+	}
+	
+	&.o_tag_selected {
+		color: $o-competences-selected-color;
+		background-color: #fff;
+		border-color: $o-competences-selected-border-color;
+		
+		&.o_tag_clickable {
+			&:hover {
+				text-decoration: none;
+				background-color: darken(#ffffff, 10%);
+				border-color: darken($o-competences-selected-border-color, 10%);
+			}
+			
+			&:active {
+				background-color: darken(#ffffff, 15%);
+				border-color: darken($o-competences-selected-border-color, 15%);
+			}
+		}
+	}
+}	
+
+.o_competences {
+	div#o_main_toolbar.o_toolbar {
+		margin-top: 0px;
+	}		
+}

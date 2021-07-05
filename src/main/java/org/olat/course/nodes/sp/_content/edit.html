@@ -1,0 +1,11 @@
+<fieldset class="o_sel_single_page_file_settings">
+	<legend>
+		$r.contextHelpWithWrapper("Course Element: Single Page")
+		$fieldSetLegend
+	</legend>
+	$r.render("combiCtr")
+</fieldset>
+
+#if ($editorEnabled)
+	$r.render("allowRelativeLinksForm")
+#end

@@ -1,0 +1,35 @@
+<script>
+/* <![CDATA[ */
+o_info.course_id="$courserepokey";
+#if($educationalTypeIdentifier)
+	o_info.educational_type_identifier="$educationalTypeIdentifier";
+#else
+	delete o_info.educational_type_identifier;
+#end
+## o_activateCourseNode is called from functions.js gotonode() method and implements 
+## the activation of the given node id in the course run structure
+function o_activateCourseNode(nodeid) {
+	if (!o_info.linkbusy) {
+		window.focus();
+		${r.openJavaScriptCommand("activateCourseNode")},"nodeid",nodeid);
+		o_scrollToElement('#o_top');
+	}
+}
+function o_activateCourseTool(toolname) {
+	if (!o_info.linkbusy) {
+		window.focus();
+		${r.openJavaScriptCommand("activateCourseTool")},"toolname",toolname);
+		o_scrollToElement('#o_top');
+	}
+}
+/* ]]> */ 
+</script>
+#if($r.available("courseProgress"))
+<div class="o_course_progress container-fluid">
+	$r.render("courseProgress")
+</div>
+#end
+
+<div class="o_course_run" data-nodeid="$initNodeId">
+	$r.render("coursemain")
+</div>

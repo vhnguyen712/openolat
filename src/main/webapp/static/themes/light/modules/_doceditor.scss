@@ -1,0 +1,75 @@
+// Remove all borders from main layout
+body.o_doceditor_body {
+	margin-bottom: 0px;
+	
+	.o_container_offcanvas {
+		max-width: 100%;
+	}
+	.container-fluid {
+		padding-left: 0px;
+		padding-right: 0px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#o_navbar_wrapper,
+	#o_container_page_width_toggler,
+	#o_toplink,
+	#o_footer_wrapper  {
+		display: none;
+	}
+
+}
+
+.o_doceditor {
+	.o_onlyoffice, .o_office365 {
+		iframe {
+			width: 100%;
+			height: 100vh;  // fallback if css variables are not supported
+			height: calc(var(--doceditorvh, 1vh) * 100);
+			border-width: 0px;
+		}
+	}
+	
+	&.o_web_document {
+		.o_onlyoffice, .o_office365 {
+			iframe {
+				width: 100%;
+				height: calc(100vh - 331px);  // editor selection is not taken
+				height: calc(var(--doceditorvh, 1vh) * 100 - 331px);
+				margin-top: 10px;
+				margin-bottom: 10px;
+				border-width: 1px;
+			}
+		}
+	}
+	
+	&.o_cnd_run {
+		.o_onlyoffice, .o_office365 {
+			iframe {
+				width: 100%;
+				height: 800px;        // Fallback if css variable not supported
+				height: calc(var(--cndcontentheight));
+				margin-top: 0px;
+				margin-bottom: 0px;
+				border-width: 1px;
+			}
+		}
+	}
+	&.o_cnd_preview {
+		.o_onlyoffice, .o_office365 {
+			iframe {
+				width: 100%;
+				height: 800px;
+				margin-top: 0px;
+				margin-bottom: 0px;
+				border-width: 1px;
+			}
+		}
+	}
+	
+	.o_file_editor,
+	.o_doceditor_data_transfer {
+		margin-right: 15px;
+		margin-left: 15px;
+	}
+}

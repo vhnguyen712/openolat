@@ -1,0 +1,35 @@
+#if($readonly)
+	#if($r.isNotNull($filename))
+		<div class="o_clearfix o_evaluation_fileupload">
+			#if($r.isNotNull($thumbUri))
+				<div class="o_evaluation_thumb">
+					<img src="$thumbUri/$filename"/>
+				</div>
+			#end
+			<div class="o_evaluation_filename">
+				<a href="$mapperUri/$filename" target="_blank">
+					<i class="o_icon $iconCss"></i> $filename
+				</a>
+				<span class="o_size">($filesize)</span>
+			</div>
+		</div>
+	#end
+#else
+	<div class="form-group $f.getElementCssClass($item) #if($f.hasError($item)) has-feedback has-error #end">
+		#if ($f.hasLabel($item))
+			$r.render("${item}_LABEL", "$f.getItemId($item)")
+		#end
+			$r.render(${item}, "form")
+			#if($f.hasError($item))
+				<span class="o_icon o_icon_error form-control-feedback"></span>
+			#end
+		#if($f.hasExample($item))
+			<div class="o_form_example help-block">
+				$r.render("${item}_EXAMPLE")
+			</div>
+		#end
+		#if($f.hasError($item))
+			$r.render("${item}_ERROR")
+		#end
+	</div>
+#end

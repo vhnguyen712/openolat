@@ -1,0 +1,520 @@
+.o_form{
+	.o_desc {
+		@extend %o_note;
+	}
+	.o_warning {
+		@extend %o_warning;
+	}
+	.o_info {
+		@extend %o_info;	
+	}
+
+	/* as of 10.4 the mandatory icon is left from the label to make place for the help o_form_chelp */
+	.o_icon_mandatory {
+		margin-right: 0.25em;
+	}
+
+	/* context help for input element, right from label */
+	.o_form_chelp {
+		padding-left: 0.25em;
+		margin-right: -1.25em;	
+	}
+	
+	/* example, positioned below the input field */	
+	.o_form_example {
+		font-size: 90%;	
+	}
+		
+	.o_error {
+		margin-top: 1px;
+		margin-bottom: 0;
+		padding: 10px;
+	}	
+	
+	hr.o_spacer_noline {
+		border-top: 1px solid transparent;
+	}
+
+	hr.o_spacer,
+	hr.o_spacer_noline {
+		&.form {
+			/* there is already enough space in the form by the wrapper divs */
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+	}
+	
+	.form-group.o_omit_margin {
+		margin-bottom: 0;
+	}
+	
+	/* date chooser */
+	.o_date  {
+		position: relative;
+		padding-right: $input-height-base;
+	}
+	
+	.o_date.form-inline  {
+		.form-group {
+			margin-left: 0;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.form-control {
+			display: inline-block;
+		}
+		.form-group.o_second_date, .o_date_ms.form-group, .form-group.o_date_separator {
+			margin-left: 25px;
+		}
+		
+		.form-group.o_date_ms.o_time_only {
+			margin-left: 0;
+		}
+	}
+	
+	.btn-group .o_date {
+		display: inline-block;
+	}
+
+	input.o_date_ms {
+		width: 3em;
+	}
+	
+	.has-feedback .o_date.form-inline .form-control.o_date_ms {
+		padding-right: 0;
+	}
+	
+	.o_form_element.form-inline .o_form_element.form-group {
+		margin-left: 25px;
+	}
+	
+	.input-group.o_date_picker {
+		width: 11em;
+	}
+	
+	.has-feedback .o_date_picker .form-control {
+		padding-right: 0;
+	}
+	
+	.form-control.textarea.o_fixed_font_with {
+		resize: vertical;
+		font-family: $font-family-monospace;
+	}
+	
+	.form-control.textarea.o_original_line_breaks {
+		white-space: pre;
+		word-wrap: normal;
+		overflow-x: auto;
+	}
+	
+	.form-control.textarea_disabled.o_fixed_font_with {
+		white-space: pre-wrap;
+		height: auto;
+		font-family: $font-family-monospace;
+		color: $input-color !important;
+		background: $input-bg-disabled;
+	}
+	
+	/* disabled text areas are rendered in div's for improved printing and layouting features */
+	.form-control.textarea_disabled {
+		resize: both;
+		overflow: auto;	
+		white-space: pre-wrap;
+		background: $input-bg-disabled;
+	}
+	
+	/*
+	currently not working in Safari and Firefox, therefore deactivated
+	.form-control.textarea.o_striped_background {
+		background-image: linear-gradient(#F1F1F1 50%, #F9F9F9 50%);
+ 		background-size: 100% #{2*$line-height-base}em;
+		background-attachment: local;
+	}*/
+	
+	.o_textarea_line_numbers_container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+	
+	.o_textarea_line_numbers_input, .o_textarea_line_numbers_wrapper, .o_textarea_line_numbers_row {
+		box-sizing: border-box;
+		vertical-align: middle;
+	}
+	
+	.o_textarea_line_numbers_input {
+		display: inline-block;
+		padding: 0 0.3em;
+		width: 100%;
+		height: 100%;
+		overflow-x: scroll;
+		resize: none !important;
+	}
+	
+	.o_textarea_line_numbers_wrapper {
+		padding: 1px 0.3em 0 0;
+		height: 100%;
+		overflow: hidden;
+	}	
+	
+	.o_textarea_line_numbers_row {
+		width: 100%;
+		display: flex;		
+		align-items: center;
+	}
+	
+	.o_textarea_line_numbers_row span {
+		font-family: $font-family-monospace;
+		text-align: right;
+		margin-left: auto;
+	}
+	
+	.o_textarea_line_numbers_row i {
+		text-align: left;
+		margin-right: 0.2em;
+	}
+
+	
+/* Card Radio Buttons */
+/* Markup:
+	<div class="form-inline o_radio_cards ">
+		<label class="radio-inline">
+			<input type="radio" name="guidemo.form.card2" value="advanced_form.yes">
+			<span class="o_radio_card">
+				<span class="o_radio_text_wrapper">
+					<span class="o_radio_label">Ja </span> 
+					<span class="o_radio_desc">Yes means yes, really! </span>
+				</span> 
+				<span class="o_radio_icon o_icon_yes"> </span>
+			</span> 
+		</label>
+		<label .... >
+	</div>
+*/
+.o_radio_cards {
+		display: flex;
+		flex-flow: column wrap;
+		align-items : stretch;
+	
+		&.form-inline { /* for vertical alignment style */
+			flex-flow: row wrap;
+		}
+		.radio {
+			flex-grow: 0;
+			flex-shrink: 0;
+			display: flex;
+		}				
+		label {
+			flex-grow: 0;
+			flex-shrink: 0;
+			flex-basis: $o-radio-card-width;
+			margin: 0 10px 10px 0;
+			padding: 0;
+		 	position: relative;
+		 	display: inline-block;
+		 	
+		 	.o_radio_card {		 	
+		 		display: flex;
+				flex-flow: row no-wrap;
+		 		width: 100%;
+		 		height: 100%;
+			 	padding: 10px 10px 10px 30px;
+			 	border-radius: $o-radio-card-border-radius;
+			 	border: 1px solid $o-radio-card-border-color;			  			 	
+				background-color: $o-radio-card-bg;			 	
+			  	&:hover {
+					background-color: $o-radio-card-bg-hover;
+				 	border: 1px solid $o-radio-card-border-color-hover;			  
+				 	.o_radio_label {
+				 		color: $o-radio-card-label-color-hover;
+					}
+			  	}
+			}		  	
+		  	input {
+				margin: auto;
+				height: 100%;
+				left: 10px;	
+		  	}		  	
+		  	.o_radio_text_wrapper {		  	
+		  		flex-grow: 1;
+				flex-shrink: 1;
+		  	}
+		  	.o_radio_label {
+		  		font-weight: bold;
+		  		display: block;
+		  	}
+		  	.o_radio_desc {
+		  		font-size: 90%;
+		  		display: block;
+		  	}
+		  	.o_radio_icon {
+		  		display: inline-block;
+		  		flex-grow: 0;
+				flex-shrink: 0;
+				margin: auto 0 auto 10px;
+				width: ($o-radio-card-width / 3);
+				height: ($o-radio-card-width / 3 / 3 * 2);
+				border: 1px solid $o-radio-card-image-border-color;
+				border-radius: $o-radio-card-image-border-radius;
+				background-position: 50% 50%;		
+				background-size: contain;
+		  	}
+
+			/* Checked and disabled states */		  	
+		  	input:checked {
+		  		~ .o_radio_card {		  		
+					background-color: $o-radio-card-bg-checked;
+				 	border: 1px solid $o-radio-card-border-color-checked;	
+					.o_radio_label {
+						color: $o-radio-card-label-color-checked;
+					}	  		  	
+				}
+		  	}
+		  	input:disabled {
+		  		~ .o_radio_card {		  		
+		  			cursor: not-allowed;
+					background-color: $input-bg-disabled;
+				 	border: 1px solid $o-radio-card-border-color;	
+					.o_radio_label, .o_radio_desc {
+						color: $text-muted;
+					}	  		  	
+				}
+		  	}
+		  	
+		}
+	}
+	/* Small and large rendering styles */
+	.o_radio_cards_sm label {
+		flex-basis: $o-radio-card-width-sm;
+		.o_radio_icon {
+			width: ($o-radio-card-width-sm / 3);
+			height: ($o-radio-card-width-sm / 3 / 3 * 2);	
+		}
+	}
+	.o_radio_cards_lg label {
+		flex-basis: $o-radio-card-width-lg;
+		.o_radio_icon {
+			width: ($o-radio-card-width-lg / 3);
+			height: ($o-radio-card-width-lg / 3 / 3 * 2);	
+		}
+	}
+
+	/* Example Image for GUI demo */
+	.o_icon_yes { 
+		background-image:url('#{$o-images-path}no_preview.png');
+	}
+	.o_icon_no { 
+		background-image:url('#{$o-images-path}no_preview_bg.png');
+	}
+}
+
+
+/* file chooser */
+.o_filepreview {
+	img {
+		@extend .img-thumbnail;
+	}
+	margin-bottom: $padding-base-vertical;
+}
+/* uploaded file with delete button */
+.o_filemeta {
+  	padding-top: ($padding-base-vertical + 1);
+  	padding-bottom: ($padding-base-vertical + 1);
+}
+.o_filesize {
+	margin-left: 0.5em;
+}
+.o_filedelete {
+	margin-left: 2em;
+}
+.o_fileinput {
+	position: relative;
+	/* the fake chooser is what the user sees. this is on layer 1, only for display */
+	.o_fakechooser {
+		position: relative;
+		z-index: 1; 		
+	}
+	/* real file chooser is transparent but on layer 2, click events trigger realchooser, not fakechooser */
+	.o_realchooser { 
+		cursor: pointer;
+		position: absolute; 
+		height: 100%;
+		width: 100%;
+		top: 0; right: 0;
+		z-index: 2; 
+		@include opacity(0); /* this is the magic: visually don't show the input element, but nevertheless catch click events */
+
+	}
+	/* the fake drag&drop area */	
+	&.o_area {
+		padding: 5px 20px ;
+		border-style: dashed;
+		
+		
+		.o_dnd {
+			text-align: center;
+		}
+		.o_dnd_icon {
+			font-size: 1.5em;
+			color: $o-panel-placeholder-color;
+		}
+		.o_dnd_info {
+			color: $o-panel-placeholder-color;
+			font-size: 0.9em;
+		}
+		.o_dnd_select {
+			margin: 0.5em;
+		}			
+		&.o_dnd_over {
+			border-color: $o-panel-placeholder-border-active-color;
+			background: $o-panel-placeholder-bg-active;
+			.o_dnd_icon {
+				color: $o-panel-placeholder-border-active-color;
+			}
+		}	
+		/* button hover not triggered because realchooser catches the hover event, manually apply btn hover style */
+		.o_realchooser {			
+			&:hover,
+			&:focus {
+				&+.o_dnd .btn {
+					color: $btn-default-color;
+				    background-color: darken($btn-default-bg, 10%);
+			        border-color: darken($btn-default-border, 12%);
+				}
+			}
+		}
+		
+		&.o_preview {
+			background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='100%' width='90px'><text transform='translate(20, 80) rotate(-45)' fill='rgb(230,230,230)' font-size='22'>Preview</text></svg>");
+		}
+	}
+	&.panel-placeholder:hover {
+		border-color: darken($o-panel-placeholder-border-color, 10%);
+	}
+}
+/* hide error icon for file element - clash with file element controls */
+.o_fileElement.has-error .o_icon_error.form-control-feedback {
+	display: none;
+}
+
+
+
+.o_form_inline_mandatory_compact {
+	i {
+		width: 20px;
+	}
+	select.form-control {
+		width: calc(100% - 25px);
+	}
+}
+
+/* day chooser with previous next */
+.o_day_chooser {
+	.o_day_previous {
+		display: inline-block;
+		a {
+			border-bottom-right-radius: 0;
+			border-top-right-radius: 0;
+			border-right: 0;
+		}
+	}
+	.o_day_date {
+		display: inline-block;
+		border-radius: 0;
+		input, .input-group-addon {
+			border-radius: 0;
+		}
+	}
+	.o_day_next {
+		display: inline-block;
+		a {
+			border-bottom-left-radius: 0;
+			border-top-left-radius: 0;
+			border-left: 0;
+		}
+	}
+}
+
+/* centered form labels are still left aligned */
+.o_centered_form {
+	text-align: center;
+	fieldset.o_form {
+		display: inline-block;
+		text-align: left;
+	}
+}
+
+/* checkbox */
+.checkbox label.o_checkbox_error {
+	color: $state-danger-text;
+}
+
+/* choice element */
+.o_choice_checkrow,
+.o_choice_textrow {
+	vertical-align: text-top;
+	padding-bottom: 2px;
+}
+.o_choice_textrow {
+	padding-left: 1em;
+}
+.o_togglecheck a {
+	white-space: nowrap;
+}
+
+.o_catalog {
+	.o_catalog_delete_img {
+		position: relative; 
+		top: -0.5em;
+	}
+}
+
+.o_button_dirty {
+	@include button-variant($o-button-dirty-color, $o-button-dirty-bg, $o-button-dirty-border);
+}
+
+/* TOGGLE SLIDERS */
+.o_button_toggle {
+	border: 1px solid $o-toggle-border-color;
+	@include border-top-radius($o-toggle-size/2 + 1px);
+	@include border-bottom-radius($o-toggle-size/2 + 1px);
+	background: $o-toggle-bg;
+	display: inline-block;
+	height: $o-toggle-size + 2px;
+	line-height: $o-toggle-size;
+	font-size: $o-toggle-size;
+	text-align: left;
+	padding: 0 0.5em 0 1px;
+	margin: 0;
+	@extend %o_undecorated;
+	
+	i {
+		color: $o-toggle-off-color;
+		text-shadow: 1px 0 2px rgba(0,0,0,.25);		
+	}	
+	span {
+		line-height: $o-toggle-size;
+		vertical-align: top;		
+		font-size: 60%;
+		color: $o-toggle-text-color;
+		text-transform: uppercase;
+	}
+	&.o_on {
+		text-align: right;
+		padding: 0 1px 0 0.5em;
+		i {
+			color: $o-toggle-on-color;
+			text-shadow: -1px 0 2px rgba(0,0,0,.25);
+		}	
+	}
+}
+
+/* STATIC TEXTELEMENT */
+.o_static_textelement_bold {
+	font-weight: bold;
+}
+
+/* input indentation */
+.o_checkbox_indented {
+	padding-left: 3em !important;
+}
